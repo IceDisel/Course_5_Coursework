@@ -48,6 +48,12 @@ class DBWrite:
         self.conn.commit()
         # self.conn.close()
 
+    def __del__(self) -> None:
+        try:
+            self.conn.close()
+        except AttributeError:
+            pass
+
     def write_db(self, employer: dict, vacancies: list) -> None:
         """
         Метод записи данных работодателей и вакансий в БД.
@@ -66,4 +72,3 @@ class DBWrite:
                                                  vacancy["requirement"], vacancy["employer_id"]))
 
         self.conn.commit()
-        self.conn.close()
