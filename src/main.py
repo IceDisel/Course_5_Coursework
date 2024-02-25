@@ -1,6 +1,7 @@
 from moduls.dbmanager import DBManager
 from moduls.dbwrite import DBWrite
 from src.config import config
+from src.setting import LIST_EMPLOYERS
 from src.utils import get_employer_info, get_vacancies_by_employer
 
 
@@ -50,7 +51,7 @@ def get_vacancies_write_db() -> None:
     params = config()
     db = DBWrite('hh_ru', params)
 
-    list_employers = ['9498120', '9855563', '78638']
+    list_employers = LIST_EMPLOYERS
     count_vacancies = 0
     for employer in list_employers:
         count_vacancies += len(get_vacancies_by_employer(employer))
@@ -70,6 +71,7 @@ if __name__ == '__main__':
         input_operation = input(" ->: ")
 
         if input_operation == '1':
+            print("Подождите, идет поиск вакансий...\n")
             get_vacancies_write_db()
         elif input_operation == '2':
             user_interface()
