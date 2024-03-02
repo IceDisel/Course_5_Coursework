@@ -7,6 +7,10 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+requests = "^2.31.0"
+psycopg2 = "^2.9.9"
+types-requests = "^2.31.0.20240218"
+types-psycopg2 = "^2.9.21.20240218"
 
 
 [tool.poetry.group.lint.dependencies]
